@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-full bg-gray-100">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -8,14 +8,8 @@
     <title>My Website</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-<!--
-  This example requires updating your template:
-  ```
-  <html class="h-full bg-gray-100">
-  <body class="h-full">
-  ```
--->
+
+<body class="h-full">
 <div class="min-h-full">
     <nav class="bg-gray-800">
         <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -26,10 +20,9 @@
                     </div>
                     <div class="hidden md:block">
                         <div class="ml-10 flex items-baseline space-x-4">
-                            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                            <a href="/" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Home</a>
-                            <a href="/about" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">About</a>
-                            <a href="/contact" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contact</a>
+                            <x-nav-link href="/" :active="request()->is('/')">Home</x-nav-link>
+                            <x-nav-link href="/about" :active="request()->is('about')">About</x-nav-link>
+                            <x-nav-link href="/contact" :active="request()->is('contact')">Contact</x-nav-link>
                         </div>
                     </div>
                 </div>
@@ -42,6 +35,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 005.454-1.31A8.967 8.967 0 0118 9.75v-.7V9A6 6 0 006 9v.75a8.967 8.967 0 01-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 01-5.714 0m5.714 0a3 3 0 11-5.714 0" />
                             </svg>
                         </button>
+
                         <!-- Profile dropdown -->
                         <div class="relative ml-3">
                             <div>
@@ -71,6 +65,7 @@
                 </div>
             </div>
         </div>
+
         <!-- Mobile menu, show/hide based on menu state. -->
         <div class="md:hidden" id="mobile-menu">
             <div class="space-y-1 px-2 pb-3 pt-2 sm:px-3">
@@ -105,6 +100,7 @@
             <h1 class="text-3xl font-bold tracking-tight text-gray-900">{{ $heading }}</h1>
         </div>
     </header>
+
     <main>
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
             {{ $slot }}
